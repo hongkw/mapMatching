@@ -1,11 +1,11 @@
 %% init
 
 % read images
-imgDB = im2gray(imread("data/imgDB2.jpg"));
+imgDB = im2gray(imread("data/imgDB1.jpg"));
 
 imgW = 512;
 imgH = 512;
-imgMeas = im2gray(imread("data/imgMeas3.jpg"));
+imgMeas = im2gray(imread("data/imgMeas1.jpg"));
 imgMeas = imcrop(imgMeas, [0, 0, imgW, imgH]);
 
 % methods for feature detection
@@ -30,7 +30,7 @@ detectFeatureName = {'BRISK', 'FAST', 'Harris', 'KAZE', ...
 
 % SET parameters
 showFig = true;
-detectFeatureMethods = [6,7, 9]; % SET the method for feature detection (see line 11)
+detectFeatureMethods = [1:3]; % SET the method for feature detection (see line 11)
 
 
 %% matching!!
