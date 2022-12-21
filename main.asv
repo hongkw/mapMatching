@@ -67,13 +67,11 @@ for i = detectFeatureMethods
 %         showMatchedFeatures(imgDB,imwarp(imgMeas,tform),inlierPts1,inlierPts2, 'montage', Parent=axes);
         montage({imgDB, imgMeas});
 
-        margin = 10;
-        height = max(size(imgDB, 1),size(imgMeas, 1));
-        width = size(imgDB, 2) + size(imgMeas, 2) + margin;
-        fusedImg = uint8(zeros(height, width));
+        height = size(imgDB, 1) + size(imgMeas, 1);
+        width = size(imgDB, 2) + size(imgMeas, 2);
+        fusedImg = 255*ones(height, width);
         fusedImg(1:size(imgDB,1), 1:size(imgDB,2)) = imgDB;
-        fusedImg(1:size(imgMeas,1),...
-            1+size(imgDB,2)+margin:size(imgDB,2)+size(imgMeas,2)+margin) = imgMeas;
+        fusedImg(1:size(imgDB,1), 1:size(imgMeas,2)) = imgDB;
         figure; imshow(fusedImg);
         title([detectFeatureName{i}, 'feature detection']);
     end
